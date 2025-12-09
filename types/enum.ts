@@ -1,0 +1,70 @@
+export enum UserRole {
+    ADMIN = "ADMIN",
+    USER = "USER",
+};
+
+
+export enum UserStatus {
+    ACTIVE = 'ACTIVE',
+    BLOCKED = 'BLOCKED'
+};
+
+export enum TravelType {
+    SOLO = 'SOLO',
+    FAMILY = 'FAMILY',
+    FRIENDS = 'FRIENDS'
+}
+
+export enum TravelStatus {
+    UPCOMING = 'UPCOMING',
+    ONGOING = 'ONGOING',
+    COMPLETED = 'COMPLETED',
+    POSTPONED = 'POSTPONED'
+}
+
+
+export enum TravelInterest {
+    ADVENTURE = 'ADVENTURE',
+    HIKING = 'HIKING',
+    FOOD_TOURS = 'FOOD_TOURS',
+    PHOTOGRAPHY = 'PHOTOGRAPHY',
+    BEACHES = 'BEACHES',
+    CITY_EXPLORATION = 'CITY_EXPLORATION',
+    HISTORY = 'HISTORY',
+    ART_CULTURE = 'ART_CULTURE',
+    WILDLIFE = 'WILDLIFE',
+    NIGHTLIFE = 'NIGHTLIFE'
+}
+
+export enum Country {
+    USA = 'USA',
+    CANADA = 'CANADA',
+    UNITED_KINGDOM = 'UNITED_KINGDOM',
+    FRANCE = 'FRANCE',
+    ITALY = 'ITALY',
+    SPAIN = 'SPAIN',
+    GERMANY = 'GERMANY',
+    NETHERLANDS = 'NETHERLANDS',
+    SWITZERLAND = 'SWITZERLAND',
+    AUSTRALIA = 'AUSTRALIA',
+    NEW_ZEALAND = 'NEW_ZEALAND',
+    JAPAN = 'JAPAN',
+    SOUTH_KOREA = 'SOUTH_KOREA',
+    THAILAND = 'THAILAND',
+    SINGAPORE = 'SINGAPORE',
+    MALAYSIA = 'MALAYSIA',
+    UAE = 'UAE',
+    TURKEY = 'TURKEY',
+    INDONESIA = 'INDONESIA',
+    MALDIVES = 'MALDIVES',
+    INDIA = 'INDIA',
+    CHINA = 'CHINA',
+    VIETNAM = 'VIETNAM',
+    PHILIPPINES = 'PHILIPPINES',
+    EGYPT = 'EGYPT',
+    BRAZIL = 'BRAZIL',
+    SOUTH_AFRICA = 'SOUTH_AFRICA',
+    MEXICO = 'MEXICO',
+    PORTUGAL = 'PORTUGAL',
+    GREECE = 'GREECE'
+}
