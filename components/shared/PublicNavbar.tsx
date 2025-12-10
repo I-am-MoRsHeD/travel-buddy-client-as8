@@ -85,7 +85,7 @@ const PublicNavbr = () => {
                             </NavigationMenu>
                         </PopoverContent>
                     </Popover>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-6 bg-white rounded-xl">
                         <Link href="/" className="text-primary hover:text-primary/90">
                             <Image
                                 src="/images/logo.png"
@@ -99,7 +99,7 @@ const PublicNavbr = () => {
 
                 {/* Middle area */}
                 <NavigationMenu className="max-md:hidden">
-                    <NavigationMenuList className="flex flex-row gap-5 w-full">
+                    <NavigationMenuList className="flex flex-row gap-5 w-full bg-white rounded-xl px-4 py-4">
                         {navigationLinks.map((link, index) => {
                             const isActive =
                                 link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
@@ -112,7 +112,7 @@ const PublicNavbr = () => {
                                             "font-medium transition-all border-b-2",
                                             isActive
                                                 ? "text-primary border-primary px-2"
-                                                : "text-muted-foreground border-transparent hover:text-primary hover:border-primary/50"
+                                                : "text-foreground border-transparent hover:text-primary hover:border-primary/50"
                                         )}
                                     >
                                         {link.label}
@@ -132,9 +132,11 @@ const PublicNavbr = () => {
                     ) : user ? (
                         <UserMenu user={user} setUser={setUser} />
                     ) : (
-                        <Button asChild className="text-sm">
-                            <Link href="/login">Login</Link>
-                        </Button>
+                        <div className="bg-white rounded-xl p-2">
+                            <Button asChild className="text-sm">
+                                <Link href="/login">Login</Link>
+                            </Button>
+                        </div>
                     )}
                 </div>
             </div>

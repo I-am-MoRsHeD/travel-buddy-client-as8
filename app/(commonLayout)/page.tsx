@@ -1,9 +1,10 @@
+import Hero from "@/components/modules/home/Hero";
 
 
 const HomePage = () => {
     return (
         <div>
-            This is home page
+            <Hero />
         </div>
     );
 };
