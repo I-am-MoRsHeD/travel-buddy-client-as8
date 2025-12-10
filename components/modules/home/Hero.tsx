@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const images = [

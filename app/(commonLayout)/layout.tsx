@@ -1,3 +1,4 @@
+import PublicFooter from "@/components/shared/PublicFooter";
 import PublicNavbr from "@/components/shared/PublicNavbar";
 import React from "react";
 
@@ -10,6 +11,7 @@ const CommonLayout = ({ children }: CommonLayoutProps) => {
         <div>
             <PublicNavbr />
             {children}
+            <PublicFooter />
         </div>
     );
 };
