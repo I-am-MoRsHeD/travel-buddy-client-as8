@@ -1,6 +1,6 @@
 'use client';
 
-import { getUser } from '@/services/auth/getUser';
+import { getUser } from '@/services/users/getUser';
 import { IUser } from '@/types/user.interface';
 import { useEffect, useState } from 'react';
 

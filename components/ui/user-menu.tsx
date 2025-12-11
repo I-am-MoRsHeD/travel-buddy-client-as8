@@ -31,7 +31,7 @@ interface UserMenuProps {
 };
 
 export default function UserMenu({ user, setUser }: UserMenuProps) {
-  
+
   const logout = async () => {
     const toastId = toast.loading('Logging out...');
     try {
@@ -50,7 +50,7 @@ export default function UserMenu({ user, setUser }: UserMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="h-auto p-0 bg-white p-1">
+        <Button variant="ghost" className="h-auto bg-white p-1">
           <Avatar>
             {user && <AvatarImage src="/images/blank-profile-picture.png" alt="Profile image" />}
           </Avatar>
@@ -72,6 +72,14 @@ export default function UserMenu({ user, setUser }: UserMenuProps) {
               <BoltIcon size={16} className="opacity-60" aria-hidden="true" />
               <span>
                 Dashboard
+              </span>
+            </DropdownMenuItem>
+          </Link>
+          <Link href={`/profile/${user?.id}`}>
+            <DropdownMenuItem>
+              <BoltIcon size={16} className="opacity-60" aria-hidden="true" />
+              <span>
+                Profile
               </span>
             </DropdownMenuItem>
           </Link>

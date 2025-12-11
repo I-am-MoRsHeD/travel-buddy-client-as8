@@ -45,10 +45,8 @@ export default function TravelerFilters() {
         <>
             <div className="md:hidden block">
                 <Sheet>
-                    <SheetTrigger className="w-1/3 mx-auto">
-                        <Button>
+                    <SheetTrigger className="w-1/2 bg-primary text-white mx-auto rounded-md py-2 block">
                             FIlter options
-                        </Button>
                     </SheetTrigger>
                     <SheetContent className="w-64 sm:w-[540px]">
                         <div className="w-full md:w-64 bg-primary/10 border-none p-4 rounded-xl h-[600px] flex flex-col">

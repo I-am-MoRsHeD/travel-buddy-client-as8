@@ -34,7 +34,7 @@ export default function TravelersCard({ traveler }: { traveler: IUser }) {
 
                     <p className="text-sm flex gap-1 items-center">
                         <Star size={16} className="text-yellow-500" />
-                        {traveler?.avgRating} ({traveler?.reviewRecieved?.length} reviews)
+                        {traveler?.avgRating} ({traveler?.reviewsReceived?.length} reviews)
                     </p>
 
                     <p className="text-sm">{traveler?.currentLocation}</p>
