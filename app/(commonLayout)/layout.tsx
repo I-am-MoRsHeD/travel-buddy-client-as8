@@ -10,7 +10,9 @@ const CommonLayout = ({ children }: CommonLayoutProps) => {
     return (
         <div>
             <PublicNavbr />
-            {children}
+            <div className="min-h-dvh">
+                {children}
+            </div>
             <PublicFooter />
         </div>
     );

@@ -28,7 +28,7 @@ export default function Hero() {
             <div className="relative w-full container">
 
                 {/* Main big image with rounded blob */}
-                <div className="relative w-full h-[700px] overflow-hidden rounded-[80px]">
+                <div className="relative w-full h-[800px] overflow-hidden rounded-[80px]">
                     {images.map((img, i) => (
                         <Image
                             key={i}

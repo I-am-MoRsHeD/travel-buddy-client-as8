@@ -50,9 +50,9 @@ export default function UserMenu({ user, setUser }: UserMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="h-auto p-0 hover:bg-foreground">
+        <Button variant="ghost" className="h-auto p-0 bg-white p-1">
           <Avatar>
-            {user && <AvatarImage src="/myImage.jpg" alt="Profile image" />}
+            {user && <AvatarImage src="/images/blank-profile-picture.png" alt="Profile image" />}
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -67,7 +67,7 @@ export default function UserMenu({ user, setUser }: UserMenuProps) {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href='/dashboard'>
+          <Link href={`/${(user?.role)?.toLowerCase()}/dashboard`}>
             <DropdownMenuItem>
               <BoltIcon size={16} className="opacity-60" aria-hidden="true" />
               <span>

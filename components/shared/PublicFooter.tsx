@@ -12,12 +12,12 @@ import {
 
 const PublicFooter = () => {
     return (
-        <footer className="container mx-auto lg:grid lg:grid-cols-5 pt-10 md:pt-16 lg:py-28">
+        <footer className="container mx-auto lg:grid lg:grid-cols-5 pt-10 md:pt-16 lg:pt-28">
 
             {/* Left Image Section */}
             <div className="relative h-32 lg:col-span-2 lg:h-full">
                 <Image
-                    src="/images/footer.jpg"
+                    src="/images/footer2.jpg"
                     alt="footer image"
                     fill
                     className="object-cover"

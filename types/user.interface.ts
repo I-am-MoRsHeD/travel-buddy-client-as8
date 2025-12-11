@@ -16,4 +16,5 @@ export interface IUser {
     travelInterests?: TravelInterest[];
     visitedCountries?: Country[];
     currentLocation?: string;
+    reviewRecieved: [];
 }

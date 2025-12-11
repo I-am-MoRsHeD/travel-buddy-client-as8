@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
-import { getDefaultDashboardRoute, isValidRedirectForRole} from "@/lib/auth-utils";
+import { getDefaultDashboardRoute, isValidRedirectForRole } from "@/lib/auth-utils";
 import { serverFetch } from "@/lib/server-fetch";
 import { zodValidators } from "@/lib/zodValidators";
 import { setCookie } from "@/services/auth/tokenHandlers";

@@ -29,7 +29,7 @@ const PublicNavbr = () => {
             : navConfig.user;
 
     return (
-        <header className="container mx-auto sticky top-1 z-50 rounded-md px-2">
+        <header className="container mx-auto fixed top-1 left-0 right-0 z-50 rounded-md px-2">
             <div className="flex h-16 items-center justify-between gap-4 w-full">
                 {/* Left side */}
                 <div className="flex flex-1 items-center gap-2">
@@ -99,7 +99,7 @@ const PublicNavbr = () => {
 
                 {/* Middle area */}
                 <NavigationMenu className="max-md:hidden">
-                    <NavigationMenuList className="flex flex-row gap-5 w-full bg-white rounded-xl px-4 py-4">
+                    <NavigationMenuList className="flex flex-row gap-5 w-full h-14 px-2 bg-white rounded-xl">
                         {navigationLinks.map((link, index) => {
                             const isActive =
                                 link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
@@ -111,7 +111,7 @@ const PublicNavbr = () => {
                                         className={cn(
                                             "font-medium transition-all border-b-2",
                                             isActive
-                                                ? "text-primary border-primary px-2"
+                                                ? "text-primary border-primary px-2 rounded-sm"
                                                 : "text-foreground border-transparent hover:text-primary hover:border-primary/50"
                                         )}
                                     >
