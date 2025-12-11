@@ -5,8 +5,8 @@ import { IUser } from "@/types/user.interface";
 
 export default function UserStats({ user }: {user : IUser}) {
     const stats = [
-        { label: "Travel Plans", value: user.travelPlans?.length ?? 0 },
-        { label: "Reviews", value: user.reviewsReceived?.length ?? 0 },
+        { label: "Travel Plans", value: user?.travelPlans?.length ?? 0 },
+        { label: "Reviews", value: user?.reviewsReceived?.length ?? 0 },
     ];
 
     return (
