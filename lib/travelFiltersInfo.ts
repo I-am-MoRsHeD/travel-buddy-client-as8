@@ -12,3 +12,16 @@ export const travelInterests = [
     { label: "WILDLIFE", value: "WILDLIFE" },
     { label: "NIGHTLIFE", value: "NIGHTLIFE" },
 ];
+
+export const travelTypes = [
+    { label: "SOLO", value: "SOLO" },
+    { label: "FAMILY", value: "FAMILY" },
+    { label: "FRIENDS", value: "FRIENDS" },
+];
+
+export const travelStatusInfo = [
+    { label: "UPCOMING", value: "UPCOMING" },
+    { label: "ONGOING", value: "ONGOING" },
+    { label: "COMPLETED", value: "COMPLETED" },
+    { label: "POSTPONED", value: "POSTPONED" },
+]

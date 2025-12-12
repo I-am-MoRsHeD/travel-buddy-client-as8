@@ -88,7 +88,7 @@ const Pagination = ({ currentPage, totalPages }: TablePaginationProps) => {
             </Button>
 
             <span className="text-sm text-muted-foreground ml-2">
-                Page {currentPage} of {totalPages}
+                Page {currentPage} of {totalPages}.
             </span>
             {/* Items per page selector */}
             <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ const Pagination = ({ currentPage, totalPages }: TablePaginationProps) => {
                         <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
                         <SelectItem value="5">5</SelectItem>
                         <SelectItem value="10">10</SelectItem>
                         <SelectItem value="20">20</SelectItem>
