@@ -19,12 +19,7 @@ import { COUNTRIES } from "@/lib";
 import { travelInterests } from "@/lib/travelFiltersInfo";
 import { toast } from "sonner";
 import InputFieldError from "@/components/shared/InputFieldError";
-
-interface ErrorItem {
-    field: string;
-    message: string;
-}
-
+import { ErrorItem } from "@/types";
 
 export function EditProfileDialog({
     user,

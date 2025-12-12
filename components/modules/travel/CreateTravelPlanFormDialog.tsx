@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { travelTypes } from "@/lib/travelFiltersInfo";
 import { COUNTRIES } from "@/lib";
 import { createTravelPlan } from "@/services/travel-plans/createTravelPlan";
+import { toast } from "sonner";
+import { ErrorItem } from "@/types";
 
 
 interface CreateTravelPlanDialogProps {
@@ -26,6 +28,22 @@ export default function CreateTravelPlanDialog({
 }: CreateTravelPlanDialogProps) {
     const [state, formAction, pending] = useActionState(createTravelPlan, null);
 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const minDate = today.toLocaleDateString("en-CA");
+
+    useEffect(() => {
+        if (state && state?.success) {
+            toast.success(state?.message || "Travel plan created successfully!");
+            onSuccess();
+            onClose();
+        }
+        else if (state && state.error && !state.success) {
+            state.error.forEach((element: ErrorItem) => {
+                toast.error(element?.message || "Travel creation failed. Please try again.");
+            });
+        }
+    }, [state]);
 
     return (
         <Dialog open={open} onOpenChange={onClose}>
@@ -58,11 +76,11 @@ export default function CreateTravelPlanDialog({
                         <Field>
                             <FieldLabel>Budget Range</FieldLabel>
                             <Input
-                                name="budget"
+                                name="budgetRange"
                                 placeholder="$500"
 
                             />
-                            <InputFieldError field="budget" state={state} />
+                            <InputFieldError field="budgetRange" state={state} />
                         </Field>
 
                         <Field>
@@ -90,7 +108,7 @@ export default function CreateTravelPlanDialog({
                             <Input
                                 type="date"
                                 name="startDate"
-
+                                min={minDate}
                             />
                             <InputFieldError field="startDate" state={state} />
                         </Field>
@@ -100,7 +118,7 @@ export default function CreateTravelPlanDialog({
                             <Input
                                 type="date"
                                 name="endDate"
-
+                                min={minDate}
                             />
                             <InputFieldError field="endDate" state={state} />
                         </Field>
