@@ -17,7 +17,7 @@ interface UserHeaderProps {
 
 export default function UserHeader({ user, isOwner }: UserHeaderProps) {
     const [editModalOpen, setEditModalOpen] = useState(false);
-
+    console.log('user header user:', user);
     return (
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8">
 

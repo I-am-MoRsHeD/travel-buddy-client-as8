@@ -18,6 +18,7 @@ import { MultiSelect } from "@/components/shared/MultiSelect";
 import { COUNTRIES } from "@/lib";
 import { travelInterests } from "@/lib/travelFiltersInfo";
 import { toast } from "sonner";
+import InputFieldError from "@/components/shared/InputFieldError";
 
 interface ErrorItem {
     field: string;
@@ -50,8 +51,6 @@ export function EditProfileDialog({
             state.error.forEach((element: ErrorItem) => {
                 toast.error(element?.message || "Profile update failed. Please try again.");
             });
-        } else if (state && !state?.success) {
-            toast.error(state?.message || "Login failed. Please try again.");
         }
     }, [state]);
 
@@ -73,18 +72,14 @@ export function EditProfileDialog({
                         <Label>Profile Photo</Label>
                         <Input
                             type="file"
-                            name="profilePhoto"
+                            name="file"
                             accept="image/*"
                             onChange={(e) => {
                                 const file = e.target.files?.[0];
                                 if (file) setPreview(URL.createObjectURL(file));
                             }}
                         />
-                        {state.error?.profilePhoto && (
-                            <p className="text-red-500 text-sm">
-                                {state.error.profilePhoto}
-                            </p>
-                        )}
+                        <InputFieldError field="file" state={state} />
 
                         {preview && (
                             <Image

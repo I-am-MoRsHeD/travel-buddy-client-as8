@@ -16,5 +16,6 @@ export const userUpdateProfileZodSchema = z.object({
     currentLocation: z.string({
         error: "Current Location is required"
     }).min(1, "Current Location is required").max(100, "Current location must be maximum of 100 words").optional(),
-    status: z.enum(Object.values(UserStatus) as [string]).optional()
+    status: z.enum(Object.values(UserStatus) as [string]).optional(),
+    profilePhoto: z.string().optional()
 });

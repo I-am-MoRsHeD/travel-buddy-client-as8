@@ -9,6 +9,7 @@ const serverFetchHelper = async (endPoint: string, options: RequestInit): Promis
     const accessToken = await getCookie('accessToken');
 
     const response = await fetch(`${BACKEND_URL}${endPoint}`, {
+        credentials: 'include',
         headers: {
             ...headers,
             Cookie: accessToken ? `accessToken=${accessToken}` : '',

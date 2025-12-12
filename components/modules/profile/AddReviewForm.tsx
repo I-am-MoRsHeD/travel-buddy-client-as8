@@ -1,16 +1,50 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectItem, SelectTrigger, SelectContent, SelectValue } from "@/components/ui/select";
+import { toast } from "sonner";
+import { serverFetch } from "@/lib/server-fetch";
 
-export default function AddReviewForm({ userId }) {
+export default function AddReviewForm({ userId }: { userId: string }) {
     const [rating, setRating] = useState("");
     const [comment, setComment] = useState("");
 
-    const submitReview = () => {
-        // You implement API call
+    const submitReview = async () => {
+        const toastId = toast.loading("Submitting your review...");
+
+        const payload = {
+            rating: Number(rating),
+            description: comment
+        };
+
+        try {
+            const res = await serverFetch.post(`/review/${userId}`, {
+                next: {
+                    tags: ["review"]
+                },
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await res.json();
+            console.log(result);
+
+            if (result.success) {
+                toast.success(result.message, { id: toastId });
+            } else {
+                toast.error(result.message || "Failed to give review. Try again", { id: toastId });
+            }
+
+        } catch (error: any) {
+            console.log(error);
+            toast.error(error?.message || "Failed to give review. Try again", { id: toastId });
+        }
+
     };
 
     return (
@@ -36,7 +70,7 @@ export default function AddReviewForm({ userId }) {
                 placeholder="Write your review..."
             />
 
-            <Button className="w-full" onClick={submitReview}>
+            <Button className="w-full" onClick={submitReview} disabled={!rating || !comment}>
                 Submit Review
             </Button>
         </div>

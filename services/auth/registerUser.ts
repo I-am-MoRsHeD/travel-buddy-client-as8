@@ -26,6 +26,9 @@ export const registerUser = async (_currentState: any, formData: any): Promise<a
         };
 
         const res = await serverFetch.post(`/user/register`, {
+            next: {
+                tags: ["user"]
+            },
             headers: {
                 'content-type': 'application/json'
             },
