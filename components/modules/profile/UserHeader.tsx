@@ -22,7 +22,7 @@ export default function UserHeader({ user, isOwner }: UserHeaderProps) {
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8">
 
             {/* Profile Photo */}
-            <div className="relative w-32 h-32 rounded-xl overflow-hidden bg-gray-200">
+            <div className="relative w-52 h-52 rounded-xl overflow-hidden bg-gray-200">
                 <Image
                     src={user?.profilePhoto ? user?.profilePhoto : '/images/blank-profile-picture.png'}
                     fill

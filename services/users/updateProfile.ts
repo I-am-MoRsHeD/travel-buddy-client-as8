@@ -16,7 +16,7 @@ export async function updateProfile(prev: any, formData: FormData) {
         visitedCountries: formData.getAll("visitedCountries"),
         profilePhoto: ""
     };
-
+    console.log("Form Data received in action:", rawData);
     const imageFile = formData.get("file") as File | null;
 
     if (!imageFile) {
