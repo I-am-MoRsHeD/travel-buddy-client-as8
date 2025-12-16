@@ -13,20 +13,29 @@ import { COUNTRIES } from "@/lib";
 import { createTravelPlan } from "@/services/travel-plans/createTravelPlan";
 import { toast } from "sonner";
 import { ErrorItem } from "@/types";
+import { ITravelPlan } from "@/types/travelPlan.interface";
+import { formatDateForInput } from "@/lib/formatters";
+import { updateTravelPlan } from "@/services/travel-plans/updateTravelPlan";
 
 
-interface CreateTravelPlanDialogProps {
+interface TravelPlanFormDialogProps {
     open: boolean;
     onClose: () => void;
     onSuccess: () => void;
+    travelPlan?: ITravelPlan;
 }
 
-export default function CreateTravelPlanDialog({
+export default function TravelPlanFormDialog({
     open,
     onClose,
     onSuccess,
-}: CreateTravelPlanDialogProps) {
-    const [state, formAction, pending] = useActionState(createTravelPlan, null);
+    travelPlan
+}: TravelPlanFormDialogProps) {
+    const isEdit = !!travelPlan;
+
+    const [state, formAction, pending] = useActionState(
+        (isEdit && travelPlan?.id) ? updateTravelPlan.bind(null, travelPlan.id!) : createTravelPlan, null
+    );
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -49,16 +58,19 @@ export default function CreateTravelPlanDialog({
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent className="md:min-w-2xl">
                 <DialogHeader>
-                    <DialogTitle className="text-xl font-semibold">Create Travel Plan</DialogTitle>
+                    <DialogTitle className="text-xl font-semibold">{isEdit ? "Update" : "Create"} Travel Plan</DialogTitle>
                 </DialogHeader>
 
                 <form action={formAction} className="space-y-4">
 
-                    {/* Budget Range + Travel Type */}
+                    {/* Destination + Budget Range + Travel Type */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <Field>
                             <FieldLabel>Destination</FieldLabel>
-                            <Select name="destination">
+                            <Select name="destination" defaultValue={
+                                state?.formData?.destination ??
+                                (isEdit ? travelPlan?.destination : undefined)
+                            }>
                                 <SelectTrigger>
                                     <SelectValue placeholder="Select destination" />
                                 </SelectTrigger>
@@ -78,14 +90,19 @@ export default function CreateTravelPlanDialog({
                             <Input
                                 name="budgetRange"
                                 placeholder="$500"
-
+                                defaultValue={
+                                    state?.formData?.budgetRange || (isEdit ? travelPlan?.budgetRange : "")
+                                }
                             />
                             <InputFieldError field="budgetRange" state={state} />
                         </Field>
 
                         <Field>
                             <FieldLabel>Travel Type</FieldLabel>
-                            <Select name="travelType">
+                            <Select name="travelType" defaultValue={
+                                state?.formData?.travelType ??
+                                (isEdit ? travelPlan?.travelType : undefined)
+                            }>
                                 <SelectTrigger>
                                     <SelectValue placeholder="Select type" />
                                 </SelectTrigger>
@@ -109,6 +126,10 @@ export default function CreateTravelPlanDialog({
                                 type="date"
                                 name="startDate"
                                 min={minDate}
+                                defaultValue={
+                                    state?.formData?.startDate ||
+                                    (isEdit ? formatDateForInput(travelPlan?.startDate) : "")
+                                }
                             />
                             <InputFieldError field="startDate" state={state} />
                         </Field>
@@ -119,6 +140,10 @@ export default function CreateTravelPlanDialog({
                                 type="date"
                                 name="endDate"
                                 min={minDate}
+                                defaultValue={
+                                    state?.formData?.endDate ||
+                                    (isEdit ? formatDateForInput(travelPlan?.endDate) : "")
+                                }
                             />
                             <InputFieldError field="endDate" state={state} />
                         </Field>
@@ -130,6 +155,9 @@ export default function CreateTravelPlanDialog({
                         <Textarea
                             name="description"
                             placeholder="Write a short description..."
+                            defaultValue={
+                                state?.formData?.description || (isEdit ? travelPlan?.description : "")
+                            }
                         />
                         <InputFieldError field="description" state={state} />
                     </Field>
@@ -141,7 +169,9 @@ export default function CreateTravelPlanDialog({
                             type="submit"
                             className="w-full"
                         >
-                            {pending ? "Creating..." : "Create Plan"}
+                            {
+                                isEdit ? (pending ? "Updating..." : "Update Travel Plan") : (pending ? "Creating..." : "Create Travel Plan")
+                            }
                         </Button>
                     </div>
                 </form>

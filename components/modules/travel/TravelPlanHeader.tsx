@@ -7,7 +7,7 @@ import { useState } from "react";
 import { travelStatusInfo, travelTypes } from "@/lib/travelFiltersInfo";
 import { COUNTRIES } from "@/lib";
 import { Plus } from "lucide-react";
-import CreateTravelPlanDialog from "./CreateTravelPlanFormDialog";
+import TravelPlanFormDialog from "./TravelPlanFormDialog";
 
 const TravelPlanHeader = () => {
     const router = useRouter();
@@ -43,7 +43,7 @@ const TravelPlanHeader = () => {
     return (
         <div className="w-full border-none flex flex-row justify-between">
 
-            <CreateTravelPlanDialog
+            <TravelPlanFormDialog
                 open={dialogOpen}
                 onClose={() => setIsDialogOpen(false)}
                 onSuccess={() => {
